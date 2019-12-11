@@ -1,7 +1,7 @@
 from github import Github
 from pathlib import Path
 
-token = Path('./token.txt')
+config = Path('./token.txt')
 
 if config.is_file():
     accessToken = open('token.txt', 'r')
