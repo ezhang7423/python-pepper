@@ -1,5 +1,5 @@
 # python-pepper
-new pepper backend
+new pepper backend with graphql api
 
 
 ## installation
