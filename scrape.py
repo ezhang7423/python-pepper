@@ -1,5 +1,10 @@
-from github import Github
-from pathlib import Path
+import requests
+
+
+
+
+url = 'https://api.github.com/graphql'
+json = { 'query' : '{ viewer { repositories(first: 30) { totalCount pageInfo { hasNextPage endCursor } edges { node { name } } } } }' }
 
 config = Path('./token.txt')
 
@@ -9,7 +14,8 @@ if config.is_file():
 else:
     token = input('input token:')
 
-    
-g = Github(token)
 
-print(g)
+headers = {'Authorization': 'token {}'.format(token)}
+
+r = requests.post(url=url, json=json, headers=headers)
+print (r.text)
