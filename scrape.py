@@ -1,10 +1,11 @@
 import requests
 from pathlib import Path
+import json
 
 
 
 url = 'https://api.github.com/graphql'
-json = { 'query' : '''{
+jsone = { 'query' : '''{
   repository(owner:"octocat", name:"Hello-World") {
     issues(last:20, states:CLOSED) {
       edges {
@@ -36,5 +37,6 @@ else:
 
 headers = {'Authorization': 'token {}'.format(token)}
 
-r = requests.post(url=url, json=json, headers=headers)
-print(r.text)
+r = requests.post(url=url, json=jsone, headers=headers)
+r = (json.loads(r.text))
+print(json.dumps(r, sort_keys=True, indent=4))
